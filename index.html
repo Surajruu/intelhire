@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Intel Hire - Login</title>
-    
-    <!-- Tailwind CSS for styling -->
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
-        /* Custom styles to extend Tailwind */
         body {
             font-family: 'Inter', sans-serif;
-            overflow: hidden; /* Prevent scrollbars during animation */
+            overflow: hidden;
         }
 
-        /* --- Animation Keyframes --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
@@ -36,47 +34,38 @@
             to { opacity: 0; visibility: hidden; }
         }
 
-        /* --- Splash Screen Styling --- */
         #logo-splash {
-            position: fixed; /* Cover the entire screen */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #000000; /* Black background */
+            background-color: #000000;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 999; /* Ensure it's on top */
-            
-            /* Animation: Fade OUT after 2 seconds */
+            z-index: 999;
             animation: fadeOut 0.5s ease-in forwards;
-            animation-delay: 2s; /* This controls how long the logo is visible */
+            animation-delay: 2s;
         }
 
         #logo-splash img {
-            /* Animation: Fade IN the logo immediately */
+            opacity: 0;
             animation: logoFadeIn 1s ease-out forwards;
         }
 
-        /* --- Login Form Styling --- */
         #login-container {
-            /* Hide the login form initially */
             opacity: 0;
-            
-            /* Animation: Fade IN after the splash screen is gone */
             animation: fadeIn 1s ease-in forwards;
-            animation-delay: 2.5s; /* Must be > splash screen's delay + duration */
+            animation-delay: 2.5s;
         }
 
-        /* Style for the radio button toggle */
         .role-selector input:checked + label {
-            background-color: #0067A3; /* Intel Blue */
+            background-color: #0067A3;
             color: white;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Style for the floating text elements */
         .floating-text {
             position: absolute;
             font-weight: 600;
@@ -91,27 +80,24 @@
 </head>
 <body class="bg-black flex items-center justify-center min-h-screen p-4">
 
-    <!-- 1. Splash Screen Container -->
+    <!-- Splash Screen -->
     <div id="logo-splash">
-        <!-- NOTE: Replace with your actual logo path. Using a placeholder for demonstration. -->
-        <img src="E:\internship\IntelHire\intelhire-logo.png" alt="Intel Hire Logo" class="h-24 rounded-lg">
+        <img src="intelhire-logo.png" alt="Intel Hire Logo" class="h-24 rounded-lg">
     </div>
 
-    <!-- 2. Main container for the form and the interactive background -->
+    <!-- Login Form Container -->
     <div id="login-container" class="bg-gray-900 w-full max-w-md p-8 rounded-2xl shadow-lg shadow-blue-500/10 relative overflow-hidden">
-        
-        <!-- The form content is now wrapped to control z-index -->
+
         <div class="relative z-10">
-            <!-- Header: Logo and Title -->
+            <!-- Header -->
             <div class="text-center mb-8">
-                <!-- NOTE: Replace with your actual logo path. -->
-                <img src="E:\internship\IntelHire\intelhire-logo.png" alt="Intel Hire Logo" class="mx-auto mb-4 h-24 rounded-lg">
+                <img src="intelhire-logo.png" alt="Intel Hire Logo" class="mx-auto mb-4 h-24 rounded-lg">
                 <h1 class="text-2xl font-bold text-white">Welcome to Intel Hire</h1>
                 <p class="text-gray-400 mt-2">Sign in to connect with talent and opportunity.</p>
             </div>
 
             <form>
-                <!-- Role Selector: Student / Recruiter -->
+                <!-- Role Selector -->
                 <div class="mb-6">
                     <label class="block text-sm font-medium text-gray-300 mb-2">I am a...</label>
                     <div class="role-selector flex bg-gray-800 rounded-full p-1">
@@ -123,7 +109,7 @@
                     </div>
                 </div>
 
-                <!-- Email Input -->
+                <!-- Email -->
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
                     <input 
@@ -136,7 +122,7 @@
                     >
                 </div>
 
-                <!-- Password Input -->
+                <!-- Password -->
                 <div class="mb-6">
                     <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
                     <input 
@@ -149,7 +135,7 @@
                     >
                 </div>
 
-                <!-- Submit Button -->
+                <!-- Submit -->
                 <button 
                     type="submit" 
                     class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-blue-500 transition-colors"
@@ -168,7 +154,6 @@
     </div>
 
     <script>
-        // This script will run after all the content (including the login form) is loaded.
         window.onload = () => {
             const container = document.getElementById('login-container');
             if (!container) return;
@@ -186,20 +171,18 @@
             
             const placedElements = [];
 
-            // Function to check for overlaps
             function checkOverlap(newRect) {
                 for (const existingRect of placedElements) {
                     if (newRect.x < existingRect.x + existingRect.width &&
                         newRect.x + newRect.width > existingRect.x &&
                         newRect.y < existingRect.y + existingRect.height &&
                         newRect.y + newRect.height > existingRect.y) {
-                        return true; // Overlap detected
+                        return true;
                     }
                 }
-                return false; // No overlap
+                return false;
             }
-            
-            // Function to place a single text element
+
             function placeText(text) {
                 const textEl = document.createElement('div');
                 textEl.classList.add('floating-text');
@@ -212,7 +195,7 @@
                 const estWidth = text.length * 8 + 20;
                 const estHeight = 24;
 
-                for (let i = 0; i < 20; i++) { // Try 20 times
+                for (let i = 0; i < 20; i++) {
                     const top = Math.random() * (container.clientHeight - estHeight);
                     const left = Math.random() * (container.clientWidth - estWidth);
                     const newRect = { x: left, y: top, width: estWidth, height: estHeight };
@@ -226,11 +209,9 @@
                     }
                 }
             }
-            
-            // Place words everywhere
+
             opportunities.forEach(text => placeText(text));
-            
-            // Mouse Move Event Listener for the floating text effect
+
             const floatingTexts = document.querySelectorAll('.floating-text');
             container.addEventListener('mousemove', (e) => {
                 const rect = container.getBoundingClientRect();
@@ -243,7 +224,6 @@
                     const elY = (elRect.top - rect.top) + elRect.height / 2;
                     const distance = Math.sqrt(Math.pow(x - elX, 2) + Math.pow(y - elY, 2));
 
-                    // Reveal text when mouse is close
                     if (distance < 100) {
                         textEl.style.opacity = '0.5';
                     } else {
